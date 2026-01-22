@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Calculator | Monex</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="tracker-body">
+
+  <!-- Back -->
+  <button class="logout-btn" onclick="window.location.href='tracker.html'">
+    ⬅ Back
+  </button>
+
+  <div class="calculator-container">
+
+    <h2>Finance Calculators</h2>
+
+    <!-- Tabs -->
+    <div class="calc-tabs">
+      <button onclick="showCalc('basic')" class="active">🧮 Calculator</button>
+      <button onclick="showCalc('sip')">📈 SIP</button>
+      <button onclick="showCalc('si')">💰 Simple Interest</button>
+    </div>
+
+    <!-- BASIC CALCULATOR -->
+    <div id="basic" class="calc-section">
+      <input type="text" id="calcDisplay" disabled />
+
+      <div class="calc-grid">
+        <button onclick="press('7')">7</button>
+        <button onclick="press('8')">8</button>
+        <button onclick="press('9')">9</button>
+        <button onclick="press('/')">÷</button>
+
+        <button onclick="press('4')">4</button>
+        <button onclick="press('5')">5</button>
+        <button onclick="press('6')">6</button>
+        <button onclick="press('*')">×</button>
+
+        <button onclick="press('1')">1</button>
+        <button onclick="press('2')">2</button>
+        <button onclick="press('3')">3</button>
+        <button onclick="press('-')">−</button>
+
+        <button onclick="press('0')">0</button>
+        <button onclick="press('.')">.</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="press('+')">+</button>
+
+        <button class="clear-btn" onclick="clearDisplay()">C</button>
+      </div>
+    </div>
+
+    <!-- SIP CALCULATOR -->
+    <div id="sip" class="calc-section hidden">
+      <input type="number" id="sipAmount" placeholder="Monthly Investment (₹)" />
+      <input type="number" id="sipRate" placeholder="Expected Return (%)" />
+      <input type="number" id="sipYears" placeholder="Time (Years)" />
+
+      <button class="google-btn" onclick="calculateSIP()">Calculate SIP</button>
+
+      <p id="sipResult"></p>
+    </div>
+
+    <!-- SIMPLE INTEREST -->
+    <div id="si" class="calc-section hidden">
+      <input type="number" id="siPrincipal" placeholder="Principal (₹)" />
+      <input type="number" id="siRate" placeholder="Rate (%)" />
+      <input type="number" id="siTime" placeholder="Time (Years)" />
+
+      <button class="google-btn" onclick="calculateSI()">Calculate Interest</button>
+
+      <p id="siResult"></p>
+    </div>
+
+  </div>
+
+  <script src="calculator.js"></script>
+</body>
+</html>

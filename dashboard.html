@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Monex Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="card">
+    <h1>Welcome to Monex 💸</h1>
+
+    <img id="userPhoto" style="width:80px;border-radius:50%;display:none;" />
+
+    <p id="welcomeText"></p>
+
+    <input
+      type="text"
+      id="nameInput"
+      placeholder="Enter your name"
+      style="padding:12px;border-radius:10px;border:none;width:100%;margin-bottom:12px;"
+    />
+
+    <button id="saveName" class="google-btn">Save Name</button>
+
+    <button id="logout" class="google-btn" style="margin-top:16px;background:#ff6b6b;color:white;">
+      Logout
+    </button>
+  </div>
+
+  <script type="module" src="dashboard.js"></script>
+</body>
+</html>

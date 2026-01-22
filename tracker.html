@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Monex Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="tracker-body">
+
+  <!-- Top right buttons -->
+ <button id="calculatorBtn" class="calc-btn">🧮 Calculator</button>
+<button id="themeToggle" class="theme-btn">🌙</button>
+<button id="logoutBtn" class="logout-btn">Logout</button>
+
+
+  <!-- Dashboard -->
+  <div class="dashboard">
+
+    <!-- Credit -->
+    <div class="balance-card">
+      <h3>Total Credit</h3>
+      <input type="number" id="addCreditInput" placeholder="Add amount (salary / bonus)" />
+      <button id="addCreditBtn" class="google-btn">Add Amount</button>
+
+      <hr style="margin:16px 0;opacity:0.3">
+
+      <h3>Available Balance</h3>
+      <h1>₹ <span id="balance">0</span></h1>
+    </div>
+
+
+
+    <!-- Add Expense -->
+    <div class="expense-card">
+      <h2>Add Daily Expense</h2>
+
+      <input type="number" id="amount" placeholder="Amount spent" />
+      <input type="date" id="date" />
+
+      <select id="category">
+        <option value="">✨ Select category</option>
+        <option>🍔 Food</option>
+        <option>🛒 Groceries</option>
+        <option>✈️ Travel</option>
+        <option>🚌 Transport</option>
+        <option>⛽ Fuel</option>
+        <option>💡 Utilities</option>
+        <option>🏠 Rent</option>
+        <option>🛍️ Shopping</option>
+        <option>🎬 Entertainment</option>
+        <option>📺 Subscriptions</option>
+        <option>🧴 Personal Care</option>
+        <option>📚 Education</option>
+        <option>💼 Office / Work Expense</option>
+        <option>🌐 Internet</option>
+        <option>📱 Mobile</option>
+        <option>🏥 Medical</option>
+        <option>🛡️ Insurance</option>
+        <option>💪 Fitness</option>
+        <option>💳 EMI</option>
+        <option>🎁 Gifts</option>
+        <option>❤️ Charity</option>
+        <option>📦 Miscellaneous</option>
+      </select>
+
+      <button id="addExpense" class="google-btn">Add Expense</button>
+    </div>
+
+    <!-- Expense Log -->
+    <div class="log-card">
+      <h2>Daily Log</h2>
+      <ul id="expenseList"></ul>
+    </div>
+
+    <!-- Donut Chart (ONLY CHANGE: month selector added) -->
+    <div class="log-card">
+      <div class="chart-header">
+        <h2>Expense Breakdown</h2>
+        <select id="donutMonthSelect" class="month-select"></select>
+      </div>
+      <canvas id="expenseChart"></canvas>
+    </div>
+
+  </div>
+
+  <!-- FULL SCREEN DAILY GRAPH (7-DAY WITH ARROWS — UNCHANGED) -->
+  <section class="full-screen-graph">
+    <div class="graph-header">
+      <button id="prevDays" class="arrow-btn">⬅️</button>
+      <span id="dateRange"></span>
+      <button id="nextDays" class="arrow-btn">➡️</button>
+    </div>
+    <canvas id="dailyChart"></canvas>
+  </section>
+
+  <script>
+  document.getElementById("calculatorBtn").onclick = () => {
+    window.location.href = "calculator.html";
+  };
+</script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="tracker.js"></script>
+
+  <!-- 💰 Savings Goal -->
+<section class="savings-section">
+  <h2>💰 Savings Goal</h2>
+
+  <input id="savingPurpose" placeholder="What are you saving for?" />
+  <input id="savingTarget" type="number" placeholder="Target amount (₹)" />
+
+  <div class="saving-log-input">
+    <input id="savingAmount" type="number" placeholder="Amount saved" />
+    <input id="savingDate" type="date" />
+    <button id="addSavingBtn">Add Saving</button>
+  </div>
+
+  <div class="progress-bar">
+  <div id="savingProgress" class="progress-fill">
+    <span id="savingPercent"></span>
+  </div>
+</div>
+
+<div class="saving-actions">
+  <button id="newGoalBtn">➕ Start New Goal</button>
+  <button id="deleteGoalBtn">🗑️ Delete Completed Goal</button>
+</div>
+
+
+  <p id="savingInfo"></p>
+
+  <ul id="savingLogs"></ul>
+</section>
+
+
+<!-- 🤖 Chatbot -->
+<div id="chatbot">
+  <div id="chatHeader">💬 Monex Assistant</div>
+
+  <div id="chatMessages"></div>
+
+  <!-- Quick Options -->
+  <div id="chatOptions" class="chat-options">
+    <button data-msg="balance">💰 Balance</button>
+    <button data-msg="today">📅 Today</button>
+    <button data-msg="total">📊 Total</button>
+    <button data-msg="top">🏆 Top Category</button>
+    <button data-msg="average">📉 Average</button>
+    <button data-msg="help">❓ Help</button>
+  </div>
+
+  <div id="chatInputBox">
+    <input type="text" id="chatInput" placeholder="Ask about your money..." />
+    <button id="sendChat">➤</button>
+  </div>
+</div>
+
+<button id="chatToggle">💬</button>
+
+<!-- 🎉 Confetti Container -->
+<div id="confetti-container"></div>
+
+
+</body>
+</html>
